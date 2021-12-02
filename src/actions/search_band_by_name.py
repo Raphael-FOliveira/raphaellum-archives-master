@@ -1,7 +1,7 @@
-from src.models.band import Band, BandGenre, BandMember
+from src.models.band import Band, BandGenreEnum, BandMember
 
 
-def search_band_by_name(name: str, bands_list) -> list[str]:
+def fetch_band_by_name(name: str, bands_list) -> list[str]:
     result_list = []
     for band in bands_list:
         if name.lower() in band.name.lower():

@@ -1,11 +1,11 @@
 import pickle
 from time import sleep
-from src.models.band import Band, BandGenre, BandMember
+from src.models.band import Band, BandGenreEnum, BandMember
 from src.actions.add_new_band import add_new_band
 from src.actions.add_band_member import add_band_member
 from src.actions.delete_band import delete_band
 from src.actions.list_all_bands import list_all_bands
-from src.actions.search_band_by_name import search_band_by_name
+from src.actions.search_band_by_name import fetch_band_by_name
 
 with open("bandslist.pickle", "rb") as bandslist:
     bands_list: list[Band] = pickle.load(bandslist)
@@ -27,11 +27,11 @@ def main():
         new_band_name = input("Band Name: ")
         new_band_genre = input("Band Genre (Rock, Pagode or Arrocha): ")
         if new_band_genre == "Rock":
-            new_band_genre = BandGenre.ROCK
+            new_band_genre = BandGenreEnum.ROCK
         elif new_band_genre == "Pagode":
-            new_band_genre = BandGenre.PAGODE
+            new_band_genre = BandGenreEnum.PAGODE
         elif new_band_genre == "Arrocha":
-            new_band_genre = BandGenre.ARROCHA
+            new_band_genre = BandGenreEnum.ARROCHA
         else:
             print("Invalid input.\n Try again.\n"
                   "Loading main menu...")
@@ -81,7 +81,7 @@ def main():
 
     elif user_input == "4":
         searched_band = input("What band are you searching for?\n> ")
-        resulting_list = search_band_by_name(searched_band, bands_list)
+        resulting_list = fetch_band_by_name(searched_band, bands_list)
         for band in resulting_list:
             print(band)
         main()

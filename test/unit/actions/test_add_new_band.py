@@ -1,13 +1,13 @@
 from unittest import TestCase
 from src.actions.add_new_band import add_new_band
-from src.models.band import Band, BandGenre, BandMember
+from src.models.band import Band, BandGenreEnum, BandMember
 
 
 class TestAddNewBand(TestCase):
     def test_add_new_band(self):
         # ARRANGE
         test_band_name: str = 'Test Name'
-        test_band_genre: BandGenre = BandGenre.ROCK
+        test_band_genre: BandGenreEnum = BandGenreEnum.ROCK
         test_band_members: list[BandMember] = [BandMember('Test Member', 'Test Instrument')]
         test_bands_list: list[Band] = []
 
