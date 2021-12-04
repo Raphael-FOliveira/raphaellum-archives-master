@@ -7,6 +7,7 @@ from src.actions.delete_band import delete_band
 from src.actions.list_all_bands import list_all_bands
 from src.actions.search_band_by_name import fetch_band_by_name
 
+
 with open("bandslist.pickle", "rb") as bandslist:
     bands_list: list[Band] = pickle.load(bandslist)
 
